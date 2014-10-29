@@ -109,3 +109,7 @@ install(PROGRAMS nodes/camera.py
 # (the plugin is exported there no matter what)
 install(FILES naocamera_nodelet.xml
         DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+        
+# install launch files
+install(DIRECTORY launch/ DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch PATTERN ".svn" EXCLUDE)
+
