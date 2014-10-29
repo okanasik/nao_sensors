@@ -9,7 +9,7 @@ find_package(catkin REQUIRED COMPONENTS
   dynamic_reconfigure
   image_transport
   nodelet
-  octomap_msgs
+#  octomap_msgs
   roscpp
   sensor_msgs
   nao_msgs
@@ -99,7 +99,7 @@ add_subdirectory(./src)
 # install sensor scripts
 install(PROGRAMS nodes/camera.py
                  nodes/microphone.py
-                 nodes/octomap.py
+#                 nodes/octomap.py
                  nodes/sonar.py
         DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

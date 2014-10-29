@@ -33,13 +33,13 @@
   <build_depend>boost</build_depend>
   <build_depend>camera_info_manager</build_depend>
   <build_depend>diagnostic_updater</build_depend>
-  <build_depend>driver_base</build_depend>
+  <!-- <build_depend>driver_base</build_depend> -->
   <build_depend>dynamic_reconfigure</build_depend>
   <build_depend>image_transport</build_depend>
   <build_depend>nao_driver</build_depend>
   <build_depend>nodelet</build_depend>
-  <build_depend>octomap</build_depend>
-  <build_depend>octomap_msgs</build_depend>
+  <!-- <build_depend>octomap</build_depend> -->
+  <!-- <build_depend>octomap_msgs</build_depend> -->
   <build_depend>roscpp</build_depend>
   <build_depend>sensor_msgs</build_depend>
   <build_depend>tf</build_depend>
@@ -53,12 +53,11 @@
   <run_depend>image_transport</run_depend>
   <run_depend>nao_driver</run_depend>
   <run_depend>nodelet</run_depend>
-  <run_depend>octomap</run_depend>
+  <!-- <run_depend>octomap</run_depend> -->
   <run_depend>roscpp</run_depend>
   <run_depend>rospy</run_depend>
   <run_depend>sensor_msgs</run_depend>
   <run_depend>tf</run_depend>
-
 
   <export>
       <nodelet plugin="${prefix}/naocamera_nodelet.xml"/>
