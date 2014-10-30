@@ -113,3 +113,6 @@ install(FILES naocamera_nodelet.xml
 # install launch files
 install(DIRECTORY launch/ DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch PATTERN ".svn" EXCLUDE)
 
+# install camera_info yaml
+install(DIRECTORY share/ DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/share PATTERN ".svn" EXCLUDE)
+
