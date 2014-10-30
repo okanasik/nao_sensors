@@ -4,8 +4,8 @@
 
   <arg name="nao_ip" default="$(optenv NAO_IP 127.0.0.1)" />
   <arg name="nao_port" default="$(optenv NAO_PORT 9559)" />
-  <arg name="source" default="2" />
-  <arg name="resolution" default="1" />
+  <arg name="source" default="0" />
+  <arg name="resolution" default="2" />
   <arg name="color_space" default="13" />
   <arg name="frame_rate" default="15" />
   <arg name="use_ros_time" default="True" />
