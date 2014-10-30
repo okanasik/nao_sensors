@@ -149,10 +149,10 @@ class NaoCam (NaoNode):
 
             if new_config['source'] == kTopCamera:
                 self.frame_id = self.config['camera_top_frame']
-                self.config['camera_info_url'] = rospy.get_param('calibration_file_top')
+                self.config['camera_info_url'] = rospy.get_param('~calibration_file_top')
             elif new_config['source'] == kBottomCamera:
                 self.frame_id = self.config['camera_bottom_frame']
-                self.config['camera_info_url'] = rospy.get_param('calibration_file_bottom')
+                self.config['camera_info_url'] = rospy.get_param('~calibration_file_bottom')
             elif new_config['source'] == kDepthCamera:
                 self.frame_id = new_config['camera_depth_frame']
                 
