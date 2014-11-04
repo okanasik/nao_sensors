@@ -125,8 +125,10 @@ class NaoCam (NaoNode):
         
         if self.config['source'] == kTopCamera:
             self.frame_id = self.config['camera_top_frame']
+            self.config['camera_info_url'] = self.config['calibration_file_top']
         elif self.config['source'] == kBottomCamera:
             self.frame_id = self.config['camera_bottom_frame']
+            self.config['camera_info_url'] = self.config['calibration_file_bottom']
         elif self.config['source'] == kDepthCamera:
             self.frame_id = self.config['camera_depth_frame']
         else:
