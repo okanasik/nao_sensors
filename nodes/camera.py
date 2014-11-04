@@ -325,7 +325,7 @@ class NaoCam (NaoNode):
                     self.nameId = None
                 r.sleep()
                 continue
-            else:
+            elif (self.nameId is None):
                 self.subscribeCams()
                 
             if self.nameId is None:
