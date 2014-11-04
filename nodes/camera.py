@@ -253,6 +253,17 @@ class NaoCam (NaoNode):
 # 
 #         return self.config
 
+    def subscribeCams(self):
+        # configure everything according to initial parameters
+        if self.get_version() < LooseVersion('2.0'):
+            self.nameId = self.camProxy.subscribe("rospy_gvm", self.config['source'],
+                                                      self.config['resolution'], self.config['color_space'],
+                                                      self.config['frame_rate'])
+        else:
+            self.nameId = self.camProxy.subscribeCamera("rospy_gvm", self.config['source'],
+                                                            self.config['resolution'], self.config['color_space'],
+                                                            self.config['frame_rate'])
+
     def run(self):
         img = Image()
         r = rospy.Rate(self.config['frame_rate'])
@@ -264,10 +275,14 @@ class NaoCam (NaoNode):
                     self.nameId = None
                 r.sleep()
                 continue
+            else:
+                self.subscribeCams()
+                
             if self.nameId is None:
-                self.reconfigure(self.config, 0)
+#                self.reconfigure(self.config, 0)
                 r.sleep()
                 continue
+            
             image = self.camProxy.getImageRemote(self.nameId)
             if image is None:
                 continue
