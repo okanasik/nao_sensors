@@ -128,7 +128,7 @@ class NaoCam (NaoNode):
         
         # configure everything according to initial parameters
         if self.get_version() < LooseVersion('2.0'):
-                self.nameId = self.camProxy.subscribe("rospy_gvm", self.config['source'],
+            self.nameId = self.camProxy.subscribe("rospy_gvm", self.config['source'],
                                                       self.config['resolution'], self.config['color_space'],
                                                       self.config['frame_rate'])
         else:
@@ -198,6 +198,8 @@ class NaoCam (NaoNode):
             key_methods.append(('source', 'setActiveCamera'))
         for key, method in key_methods:
             self.camProxy.__getattribute__(method)(self.nameId, self.config[key])
+            
+        rospy.loginfo('Init configuration successfull')
 
 #     def reconfigure( self, new_config, level ):
 #         """
@@ -301,6 +303,7 @@ class NaoCam (NaoNode):
 # 
 #         return self.config
 
+
     def subscribeCams(self):
         # configure everything according to initial parameters
         if self.get_version() < LooseVersion('2.0'):
@@ -361,6 +364,7 @@ class NaoCam (NaoNode):
             img.step = img.width * nbLayers
             img.data = image[6]
 
+            rospy.loginfo('send image')
             self.pub_img_.publish(img)
 
             # deal with the camera info
