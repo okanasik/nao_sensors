@@ -161,31 +161,30 @@ class NaoCam (NaoNode):
  
         for key, naoqi_key in key_naoqi_keys:
             if self.get_version() < LooseVersion('2.0'):
-                self.camProxy.setParam(naoqi_key, new_config[key])
+                self.camProxy.setParam(naoqi_key, self.config[key])
             else:
-                self.camProxy.setCameraParameter(self.nameId, naoqi_key, new_config[key])
+                self.camProxy.setCameraParameter(self.nameId, naoqi_key, self.config[key])
  
         for key, naoqi_key, auto_exp_val in [('exposure', kCameraExposureID, 0),
                                              ('gain', kCameraGainID, 0), ('brightness', kCameraBrightnessID, 1)]:
             if self.get_version() < LooseVersion('2.0'):
                 self.camProxy.setParam(kCameraAutoExpositionID, auto_exp_val)
-                self.camProxy.setParam(naoqi_key, new_config[key])
+                self.camProxy.setParam(naoqi_key, self.config[key])
             else:
                 self.camProxy.setCameraParameter(self.nameId, kCameraAutoExpositionID, auto_exp_val)
-                self.camProxy.setCameraParameter(self.nameId, naoqi_key, new_config[key])
+                self.camProxy.setCameraParameter(self.nameId, naoqi_key, self.config[key])
         if self.get_version() < LooseVersion('2.0'):
             self.camProxy.setParam(kCameraAutoWhiteBalanceID, 0)
-            self.camProxy.setParam(kCameraWhiteBalanceID, new_config['white_balance'])
+            self.camProxy.setParam(kCameraWhiteBalanceID, self.config['white_balance'])
         else:
             self.camProxy.setCameraParameter(self.nameId, kCameraAutoWhiteBalanceID, 0)
-            self.camProxy.setCameraParameter(self.nameId, kCameraWhiteBalanceID, new_config['white_balance'])
+            self.camProxy.setCameraParameter(self.nameId, kCameraWhiteBalanceID, self.config['white_balance'])
  
         key_methods =  [ ('resolution', 'setResolution'), ('color_space', 'setColorSpace'), ('frame_rate', 'setFrameRate')]
         if self.get_version() >= LooseVersion('2.0'):
             key_methods.append(('source', 'setActiveCamera'))
         for key, method in key_methods:
-            if self.config[key] != new_config[key] or is_camera_new:
-                self.camProxy.__getattribute__(method)(self.nameId, new_config[key])
+            self.camProxy.__getattribute__(method)(self.nameId, self.config[key])
 
 #     def reconfigure( self, new_config, level ):
 #         """
