@@ -112,7 +112,20 @@ class NaoCam (NaoNode):
             self.config['use_ros_time'] = rospy.get_param('~use_ros_time')
         else:
             self.config['use_ros_time'] = False
-            
+        
+        # set camera parameters
+        self.config['auto_exposition'] = 1
+        self.config['auto_exposure_algo'] = 1
+        self.config['exposure'] = 128
+        self.config['gain'] = 128
+        self.config['brightness'] = 128
+        self.config['contrast'] = 64
+        self.config['saturation'] = 128
+        self.config['hue'] = 0
+        self.config['sharpness'] = 0
+        self.config['auto_white_balance'] = 1
+        self.config['white_balance'] = -50
+        
         # configure everything according to initial parameters
         if self.get_version() < LooseVersion('2.0'):
                 self.nameId = self.camProxy.subscribe("rospy_gvm", self.config['source'],
